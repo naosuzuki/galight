@@ -34,6 +34,7 @@ def read_pixel_scale(header):
     scales = proj_plane_pixel_scales(wcs) * 3600  #From degree to arcsec
     if scales[0] != scales[1]:
         print('Warning: Pixel scale is not the same along x and y!!!')
+        print('x=',scales[0],'y=',scales[1])
     pix_scale = scales[0] 
     return pix_scale
 
