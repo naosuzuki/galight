@@ -227,8 +227,8 @@ class FittingProcess(object):
         f.tight_layout()
         if save_plot == True:
             #plt.savefig('{0}_model.pdf'.format(self.savename))  
-            #plt.savefig('model.png')
-            plt.savefig('{0}.png'.format(self.savename))
+            plt.savefig('model.png')
+            #plt.savefig('{0}.png'.format(self.savename))
         if show_plot == True:
             plt.show()
         else:
@@ -335,7 +335,8 @@ class FittingProcess(object):
         if save_plot == True:
             savename = self.savename
             #fig.savefig(savename+"_galaxy_final_plot.pdf")   
-            fig.savefig(savename+".png")   
+            #fig.savefig(savename+".png")   
+            fig.savefig("finalgalaxy.png")   
         if show_plot == True:
             plt.show()
         else:
