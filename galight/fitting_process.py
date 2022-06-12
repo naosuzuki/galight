@@ -303,7 +303,8 @@ class FittingProcess(object):
                       target_ID = target_ID)
         if save_plot == True:
             savename = self.savename
-            fig.savefig(savename+"_qso_final_plot.pdf")   
+            #fig.savefig(savename+"_qso_final_plot.pdf")   
+            fig.savefig(savename+"_plot.png")   
         if show_plot == True:
             plt.show()
         else:
@@ -333,7 +334,8 @@ class FittingProcess(object):
                       target_ID = target_ID)
         if save_plot == True:
             savename = self.savename
-            fig.savefig(savename+"_galaxy_final_plot.pdf")   
+            #fig.savefig(savename+"_galaxy_final_plot.pdf")   
+            fig.savefig(savename+".png")   
         if show_plot == True:
             plt.show()
         else:

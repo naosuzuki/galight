@@ -213,6 +213,8 @@ def total_compare(flux_list_2d, label_list_2d, flux_list_1d, label_list_1d,
     pos5 = [pos5_o.x0+0.112 - 0.009 * cl_num , pos5_o.y0+0.08, pos5_o.width*0.72, pos5_o.height*1.1]      
     ax_rt.set_position(pos4) # set a new position
     ax_rb.set_position(pos5) # set a new position
+
+    plt.savefig('totalcompare.png')
     if show_plot == True:
         plt.show()       
     else:
