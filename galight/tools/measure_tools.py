@@ -9,6 +9,7 @@ A group of function to measure the photometry.
 """
 
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 import astropy.io.fits as pyfits
 
@@ -226,6 +227,7 @@ def flux_profile(image, center, radius=35,start_p=1.5, grids=20, x_gridspace=Non
         plt.colorbar(cax)
         plt.show()
     if if_plot == True:
+        matplotlib.use('Agg')
         minorLocator = AutoMinorLocator()
         fig, ax = plt.subplots()
         plt.plot(r_grids, r_flux, 'x-')
@@ -342,6 +344,7 @@ def profiles_compare(prf_list, prf_name_list = None, x_gridspace = None, radius 
     --------
         The plot of SB comparison.
     '''
+    matplotlib.use('Agg')
     if x_gridspace == None:
         radius = radius
     elif x_gridspace == 'log':
@@ -429,6 +432,7 @@ def measure_bkg(img, if_plot=False, nsigma=2, npixels=25, dilate_size=11):
     bkg = Background2D(img, (box_s, box_s), filter_size=(3, 3),
                        sigma_clip=sigma_clip, bkg_estimator=bkg_estimator,
                        mask=mask)
+    matplotlib.use('Agg')
     fig=plt.figure(figsize=(15,15))
     ax=fig.add_subplot(1,1,1)
     ax.imshow(img, norm=LogNorm(), origin='lower') 
@@ -687,6 +691,7 @@ def detect_obj(image, detect_tool = 'phot', exp_sz= 1.2, if_plot=False, auto_sor
             apertures[i].theta = moments['phi_deg']*np.pi/180
 
     if if_plot == True:
+        matplotlib.use('Agg')
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12.5, 10))
         vmin = 1.e-3
         vmax = image.max()
@@ -746,6 +751,7 @@ def mask_obj(image, apertures, if_plot = False, sum_mask = False):
         mask = mask_set.to_image((len(image),len(image)))
         mask = 1- mask
         if if_plot:
+            matplotlib.use('Agg')
             print( "plot mask for object {0}:".format(i) )
             fig, axi = plt.subplots(1, 1, figsize=None)
             axi.add_patch(patch)
@@ -763,6 +769,7 @@ def esti_bgkstd(image, nsigma=2, exp_sz= 1.5, npixels = 15, if_plot=False):
     """
     Estimate the value of the background rms, by first block all the light and measure empty regions.
     """
+    matplotlib.use('Agg')
     apertures,_,_,_ = detect_obj(image, nsigma=nsigma , exp_sz=exp_sz, npixels = npixels, if_plot=False, use_moments=False)
     mask_list = mask_obj(image, apertures, if_plot=False)
     mask = np.ones_like(image)
@@ -808,6 +815,7 @@ def plot_data_apertures(image, apertures, if_plot=True):
     """
     Quickly make a image+aperture plot.
     """
+    matplotlib.use('Agg')
     plt.figure(figsize=(8,6))
     # fig, ax = plt.subplots(figsize=(8,6))
     plt.title('Data and apertures sets')
@@ -829,6 +837,7 @@ def plot_data_apertures_point(image, apertures, ps_center_list, savename = None,
     """
     Quickly make a image+aperture+PS plot.
     """    
+    matplotlib.use('Agg')
     plt.figure(figsize=(8,6))
     # fig, ax = plt.subplots(figsize=(8,6))
     plt.title('Data and components used to fit', fontsize=25)
@@ -910,6 +919,7 @@ def fit_data_twoD_Gaussian(data, popt_ini = None, if_plot= False):
     # y = np.linspace(0, len(data)-1, len(data))
     # x, y = np.meshgrid(x, y)
     # xy = (x, y)
+    matplotlib.use('Agg')
     if popt_ini == None:
         popt_ini = (data.max(),len(data)/2,len(data)/2,2,2,0,0.1)
     box_size = len(data)
@@ -934,6 +944,7 @@ def fit_data_oneD_gaussian(data, ifplot = False):
     """
     Fit data as 1D gaussion
     """   
+    matplotlib.use('Agg')
     bin_heights, bin_borders = np.histogram(data, bins='auto')
     bin_widths = np.diff(bin_borders)
     bin_centers = bin_borders[:-1] + bin_widths / 2

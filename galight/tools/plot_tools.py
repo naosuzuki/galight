@@ -7,6 +7,7 @@ Created on Wed Sep 16 20:28:10 2020
 """
 
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 import astropy.io.fits as pyfits
 from matplotlib.colors import LogNorm
@@ -85,6 +86,7 @@ def total_compare(flux_list_2d, label_list_2d, flux_list_1d, label_list_1d,
         if_annuli: bool.
             If True, the 1D profile will show the surface brightness in the annuli apertures. 
     """
+    matplotlib.use('Agg')
     # norm = LogNorm() #ImageNormalize(stretch=SqrtStretch())
     cl_num = len(flux_list_2d) + 1 
     f = plt.figure(0, figsize=(6.5+ (cl_num-1)*3.5,4))    
@@ -229,6 +231,7 @@ def profile_plots(flux_list_2d, label_list_2d, flux_list_1d, label_list_1d,
     """
     Similar to total_compare(), i.e., to compare a list of light profiles but without showing normlized residual.
     """
+    matplotlib.use('Agg')
     # norm = LogNorm() #ImageNormalize(stretch=SqrtStretch())
     cl_num = len(flux_list_2d) + 1 
     f = plt.figure(0, figsize=(6.5+ (cl_num-1)*3.5,4))    
