@@ -226,7 +226,9 @@ class FittingProcess(object):
         modelPlot.subtract_from_data_plot(ax=axes[2,2], text='Data - host galaxy - Point Source', lens_light_add=True, point_source_add=True)
         f.tight_layout()
         if save_plot == True:
-            plt.savefig('{0}_model.pdf'.format(self.savename))  
+            #plt.savefig('{0}_model.pdf'.format(self.savename))  
+            #plt.savefig('model.png')
+            plt.savefig('{0}.png'.format(self.savename))
         if show_plot == True:
             plt.show()
         else:

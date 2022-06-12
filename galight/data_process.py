@@ -67,7 +67,6 @@ class DataProcess(object):
     def __init__(self, fov_image=None, target_pos = None, pos_type = 'pixel', header=None, 
                  exptime = None, fov_noise_map = None,rm_bkglight = False, if_plot = False, 
                  zp = None, **kwargs):
-        print('test')
         if target_pos is not None:
             if pos_type == 'pixel':
                 self.target_pos = target_pos

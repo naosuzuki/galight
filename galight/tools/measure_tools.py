@@ -322,7 +322,7 @@ def SB_profile(image, center, radius=35, start_p=1.5, grids=20,
 
 def profiles_compare(prf_list, prf_name_list = None, x_gridspace = None, radius = 6,
                      grids = 20,  norm_pix = 3, if_annuli=False,
-                     y_log=False, scale_list=None):
+                     y_log=False, scale_list=None,figname='profiles.png'):
     '''
     Compare the SB profile between different images. 
     
@@ -388,7 +388,8 @@ def profiles_compare(prf_list, prf_name_list = None, x_gridspace = None, radius 
     plt.grid(which="minor")
     plt.legend(prop={'size':15},ncol=2)
     plt.tick_params(labelsize=20)
-    plt.show() 
+    plt.savefig(figname)
+    #plt.show() 
     return fig
 
 def measure_bkg(img, if_plot=False, nsigma=2, npixels=25, dilate_size=11):
