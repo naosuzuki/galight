@@ -478,6 +478,7 @@ class FittingProcess(object):
             feeddata -= self.image_ps_list[i]
         if if_plot:
             from matplotlib.colors import LogNorm
+            matplotlib.use('Agg')
             fig, (ax1, ax3, ax2) = plt.subplots(1, 3, figsize=(14, 10))
             im1 = ax1.imshow(feeddata, origin='lower', norm=LogNorm(vmax = feeddata.max(), vmin = 1.e-4))
             ax1.set_title('Data input to starmorph', fontsize=25)
